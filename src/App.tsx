@@ -291,7 +291,7 @@ function QualificationPage({ step, answers, handleAnswer, handleNextStep, canPro
             <span className="block sm:inline mt-1 sm:mt-0"> in just 4 to 6 months</span>
           </h2>
           <p className="text-base sm:text-xl lg:text-2xl text-white/90 mb-10 sm:mb-12 max-w-4xl mx-auto leading-relaxed px-2">
-            We've helped over 150 African students from Zambia, Kenya, South Africa, Zimbabwe, Botswana & more get accepted.
+            We've helped over 150 African students from Zambia, Kenya, South Africa, Zimbabwe, Botswana & more get accepted
           </p>
 
           <button
