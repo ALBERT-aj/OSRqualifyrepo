@@ -661,7 +661,7 @@ function QualificationPage({ step, answers, handleAnswer, handleNextStep, canPro
                         </tr>
                         <tr className="bg-yellow-100">
                           <td className="border border-gray-300 px-2 py-2 font-bold" colspan="2">Total Estimated Costs</td>
-                          <td className="border border-gray-300 px-2 py-2 font-bold">AUD 15,000 – AUD 25,000+</td>
+                          <td className="border border-gray-300 px-2 py-2 font-bold">AUD 15,000 – AUD 30,000+</td>
                           <td className="border border-gray-300 px-2 py-2 font-bold">Indicative range only. Actual costs depend on test choice, university, course, etc.</td>
                         </tr>
                       </tbody>
