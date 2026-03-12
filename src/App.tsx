@@ -109,6 +109,8 @@ function App() {
 
       const notes = existingLead ? 'Duplicate submission - user submitted form again' : null;
 
+      const isQualified = (answers.proofOfFunds || false) && (answers.applicationCosts || false) && (answers.serviceFee || false);
+
       const { error } = await supabase.from('leads').insert({
         first_name: formData.firstName,
         last_name: formData.lastName,
@@ -124,7 +126,7 @@ function App() {
         proof_of_funds: answers.proofOfFunds || false,
         application_costs: answers.applicationCosts || false,
         service_fee: answers.serviceFee || false,
-        is_qualified: false,
+        is_qualified: isQualified,
         source_page: 'nurture',
         notes: notes
       });
