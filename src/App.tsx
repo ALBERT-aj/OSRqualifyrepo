@@ -6,15 +6,34 @@ import ThankYou from './ThankYou';
 import CountryCodeSelect from './CountryCodeSelect';
 import { worldwideCountryCodes } from './worldwideCountryCodes';
 
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+if (!supabaseUrl || !supabaseAnonKey) {
+  console.error('Missing Supabase environment variables:', {
+    url: supabaseUrl ? 'present' : 'MISSING',
+    key: supabaseAnonKey ? 'present' : 'MISSING'
+  });
+}
+
 const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY
+  supabaseUrl || '',
+  supabaseAnonKey || ''
 );
 
 type Page = 'qualification' | 'booking' | 'nurture' | 'admin' | 'thankyou-qualified' | 'thankyou-unqualified';
 
 function App() {
   const calendlyLink = 'https://calendly.com/r-geddes-optimalstudentrecruitment/student-counselling-session?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=6eff00';
+
+  // Log environment status on app load
+  useEffect(() => {
+    console.log('App initialized with Supabase config:', {
+      url: supabaseUrl || 'MISSING',
+      keyPresent: !!supabaseAnonKey
+    });
+  }, []);
+
   const [currentPage, setCurrentPage] = useState<Page>(() => {
     if (window.location.pathname === '/admin') {
       return 'admin';
@@ -147,7 +166,21 @@ function App() {
       setCurrentPage('thankyou-unqualified');
 
     } catch (error: any) {
-      setSubmitError(error.message || 'Something went wrong. Please try again.');
+      console.error('Submission error:', error);
+      console.error('Supabase config:', {
+        url: supabaseUrl ? 'configured' : 'MISSING',
+        key: supabaseAnonKey ? 'configured' : 'MISSING'
+      });
+
+      let errorMessage = 'Something went wrong. Please try again.';
+
+      if (error.message === 'Failed to fetch') {
+        errorMessage = 'Unable to connect to the server. Please check your internet connection and try again.';
+      } else if (error.message) {
+        errorMessage = error.message;
+      }
+
+      setSubmitError(errorMessage);
     } finally {
       setIsSubmitting(false);
     }
