@@ -736,6 +736,11 @@ function BookingPage({ calendlyLink, setCurrentPage }: { calendlyLink: string; s
 
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    // Fire Meta Pixel Lead event when booking page loads
+    if (typeof window !== 'undefined' && window.fbq) {
+      window.fbq('track', 'Lead');
+    }
   }, []);
 
   useEffect(() => {
