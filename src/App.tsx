@@ -784,16 +784,6 @@ function BookingPage({ calendlyLink, setCurrentPage }: { calendlyLink: string; s
   useEffect(() => {
     const handleCalendlyEvent = (e: MessageEvent) => {
       if (e.data.event && e.data.event === 'calendly.event_scheduled') {
-        // Fire Meta Pixel CompleteRegistration event
-        if (
-          typeof window !== 'undefined' &&
-          window.fbq &&
-          !sessionStorage.getItem('meta_complete_registration_fired')
-        ) {
-          window.fbq('track', 'CompleteRegistration');
-          sessionStorage.setItem('meta_complete_registration_fired', 'true');
-        }
-
         // Navigate to thank you page
         setCurrentPage('thankyou-qualified');
       }

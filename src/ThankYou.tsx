@@ -1,4 +1,5 @@
 import { CheckCircle, Mail, Phone, ArrowRight } from 'lucide-react';
+import { useEffect } from 'react';
 
 interface ThankYouProps {
   type: 'qualified' | 'unqualified';
@@ -6,6 +7,20 @@ interface ThankYouProps {
 
 export default function ThankYou({ type }: ThankYouProps) {
   const isQualified = type === 'qualified';
+
+  useEffect(() => {
+    if (isQualified) {
+      // Fire Meta Pixel CompleteRegistration event when thank you page loads
+      if (
+        typeof window !== 'undefined' &&
+        window.fbq &&
+        !sessionStorage.getItem('meta_complete_registration_fired')
+      ) {
+        window.fbq('track', 'CompleteRegistration');
+        sessionStorage.setItem('meta_complete_registration_fired', 'true');
+      }
+    }
+  }, [isQualified]);
 
   return (
     <div className="min-h-screen relative flex items-center justify-center px-4 py-12 overflow-hidden">
