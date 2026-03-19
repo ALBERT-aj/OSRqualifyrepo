@@ -7,4 +7,5 @@ interface Window {
       parentElement: Element;
     }) => void;
   };
+  fbq?: (action: string, event: string, params?: object) => void;
 }

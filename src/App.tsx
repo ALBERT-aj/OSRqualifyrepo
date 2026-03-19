@@ -188,6 +188,11 @@ function App() {
 
 
   const handleRevealQuestions = () => {
+    // Fire Meta Pixel InitiateCheckout event
+    if (typeof window !== 'undefined' && window.fbq) {
+      window.fbq('track', 'InitiateCheckout');
+    }
+
     setQuestionsVisible(true);
     setTimeout(() => {
       document.getElementById('questions-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
