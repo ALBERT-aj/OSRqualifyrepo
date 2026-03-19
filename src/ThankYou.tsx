@@ -19,6 +19,16 @@ export default function ThankYou({ type }: ThankYouProps) {
         window.fbq('track', 'CompleteRegistration');
         sessionStorage.setItem('meta_complete_registration_fired', 'true');
       }
+    } else {
+      // Fire Meta Pixel UnqualifiedLeadCaptured event when unqualified thank you page loads
+      if (
+        typeof window !== 'undefined' &&
+        window.fbq &&
+        !sessionStorage.getItem('meta_unqualified_lead_captured_fired')
+      ) {
+        window.fbq('trackCustom', 'UnqualifiedLeadCaptured');
+        sessionStorage.setItem('meta_unqualified_lead_captured_fired', 'true');
+      }
     }
   }, [isQualified]);
 

@@ -1004,6 +1004,18 @@ function NurturePage({ formData, setFormData, handleSubmitLead, isSubmitting, su
   const [showCustomPhoneCode, setShowCustomPhoneCode] = useState(false);
   const [showCustomTextCode, setShowCustomTextCode] = useState(false);
 
+  useEffect(() => {
+    // Fire Meta Pixel UnqualifiedLead event when nurture page loads
+    if (
+      typeof window !== 'undefined' &&
+      window.fbq &&
+      !sessionStorage.getItem('meta_unqualified_lead_fired')
+    ) {
+      window.fbq('trackCustom', 'UnqualifiedLead');
+      sessionStorage.setItem('meta_unqualified_lead_fired', 'true');
+    }
+  }, []);
+
   const handlePhoneCodeChange = (value: string) => {
     if (value === 'custom') {
       setShowCustomPhoneCode(true);
