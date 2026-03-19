@@ -189,8 +189,13 @@ function App() {
 
   const handleRevealQuestions = () => {
     // Fire Meta Pixel InitiateCheckout event
-    if (typeof window !== 'undefined' && window.fbq) {
+    if (
+      typeof window !== 'undefined' &&
+      window.fbq &&
+      !sessionStorage.getItem('meta_initiate_checkout_fired')
+    ) {
       window.fbq('track', 'InitiateCheckout');
+      sessionStorage.setItem('meta_initiate_checkout_fired', 'true');
     }
 
     setQuestionsVisible(true);
@@ -738,8 +743,13 @@ function BookingPage({ calendlyLink, setCurrentPage }: { calendlyLink: string; s
     window.scrollTo(0, 0);
 
     // Fire Meta Pixel Lead event when booking page loads
-    if (typeof window !== 'undefined' && window.fbq) {
+    if (
+      typeof window !== 'undefined' &&
+      window.fbq &&
+      !sessionStorage.getItem('meta_lead_fired')
+    ) {
       window.fbq('track', 'Lead');
+      sessionStorage.setItem('meta_lead_fired', 'true');
     }
   }, []);
 
@@ -775,8 +785,13 @@ function BookingPage({ calendlyLink, setCurrentPage }: { calendlyLink: string; s
     const handleCalendlyEvent = (e: MessageEvent) => {
       if (e.data.event && e.data.event === 'calendly.event_scheduled') {
         // Fire Meta Pixel CompleteRegistration event
-        if (typeof window !== 'undefined' && window.fbq) {
+        if (
+          typeof window !== 'undefined' &&
+          window.fbq &&
+          !sessionStorage.getItem('meta_complete_registration_fired')
+        ) {
           window.fbq('track', 'CompleteRegistration');
+          sessionStorage.setItem('meta_complete_registration_fired', 'true');
         }
 
         // Navigate to thank you page
