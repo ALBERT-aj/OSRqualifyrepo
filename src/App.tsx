@@ -261,7 +261,7 @@ function QualificationPage({ step, answers, handleAnswer, handleNextStep, canPro
       quote: "Your child will not only receive assistance with the application process but will also have a mentor to guide and support them all the way through to graduation.",
       initials: "GMW",
       image: "/image%20copy.png",
-      name: "Mrs. Gina Mwango Willey - Zambia, Kitwe"
+      name: "Mrs. Gina Willey - Zambia, Kitwe"
     },
     {
       quote: "Optimal Student Recruitment made the impossible possible. My daughter received her acceptance letter in just 5 months. We couldn't have done it without their support.",
@@ -841,7 +841,7 @@ function BookingPage({ calendlyLink, setCurrentPage }: { calendlyLink: string; s
     },
     {
       quote: "Your child will not only receive assistance with the application process but will also have a mentor to guide and support them all the way through to graduation.",
-      author: "Mrs. Gina Mwango Willey - Zambia, Kitwe",
+      author: "Mrs. Gina Willey - Zambia, Kitwe",
       image: "/image%20copy.png"
     },
     {
