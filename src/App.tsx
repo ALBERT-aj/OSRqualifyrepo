@@ -252,7 +252,7 @@ function QualificationPage({ step, answers, handleAnswer, handleNextStep, canPro
 
   const testimonials = [
     {
-      quote: "You can miss the opportunity just because you did not present the right documentation, and this is what Optimal Student Recruitment did for me. They aligned what I needed to produce as documentation. I've got 2 kids at Curtin, and Mr. Richards, upon hearing the courses that my kids wanted to pursue, he was able to advise and help pick the best school for that particular course.",
+      quote: "They aligned what I needed to produce as documentation. | You can miss the opportunity just because you did not present the right documentation, and this is what Optimal Student Recruitment did for me. I've got 2 kids at Curtin, and Mr. Richards, upon hearing the courses that my kids wanted to pursue, he was able to advise and help pick the best school for that particular course.",
       initials: "BM",
       image: "/image%20copy%20copy.png",
       name: "Mrs. Beverly Machawi - Zambia"
@@ -423,9 +423,11 @@ function QualificationPage({ step, answers, handleAnswer, handleNextStep, canPro
             >
               <Quote className="w-10 h-10 sm:w-12 sm:h-12 text-[#25D366] opacity-20 absolute top-6 right-6" />
               <div className="mb-6">
-                <p className="text-base sm:text-lg text-gray-700 leading-relaxed relative z-10">
-                  "{testimonials[currentTestimonial].quote}"
-                </p>
+                {testimonials[currentTestimonial].quote.split(' | ').map((part, i, arr) => (
+                  <p key={i} className={`text-base sm:text-lg text-gray-700 leading-relaxed relative z-10${i === 0 ? (arr.length > 1 ? ' mb-3' : '') : ''}`}>
+                    {i === 0 ? '"' : ''}{part}{i === arr.length - 1 ? '"' : ''}
+                  </p>
+                ))}
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-full bg-[#25D366]/10 flex items-center justify-center flex-shrink-0 overflow-hidden">
@@ -840,7 +842,7 @@ function BookingPage({ calendlyLink, setCurrentPage }: { calendlyLink: string; s
 
   const testimonials = [
     {
-      quote: "You can miss the opportunity just because you did not present the right documentation, and this is what Optimal Student Recruitment did for me. They aligned what I needed to produce as documentation. I've got 2 kids at Curtin, and Mr. Richards, upon hearing the courses that my kids wanted to pursue, he was able to advise and help pick the best school for that particular course.",
+      quote: "They aligned what I needed to produce as documentation. | You can miss the opportunity just because you did not present the right documentation, and this is what Optimal Student Recruitment did for me. I've got 2 kids at Curtin, and Mr. Richards, upon hearing the courses that my kids wanted to pursue, he was able to advise and help pick the best school for that particular course.",
       author: "Mrs. Beverly Machawi - Zambia",
       image: "/image%20copy%20copy.png"
     },
@@ -964,9 +966,11 @@ function BookingPage({ calendlyLink, setCurrentPage }: { calendlyLink: string; s
               {visibleTestimonials.map((testimonial, index) => (
                 <div key={slideIndex + index} className="bg-gradient-to-br from-gray-50 to-white border-2 border-gray-200 rounded-xl p-6 relative animate-fade-in">
                   <Quote className="w-10 h-10 text-[#25D366] opacity-20 absolute top-4 right-4" />
-                  <p className="text-gray-700 leading-relaxed mb-4 relative z-10">
-                    "{testimonial.quote}"
-                  </p>
+                  {testimonial.quote.split(' | ').map((part, i, arr) => (
+                    <p key={i} className={`text-gray-700 leading-relaxed relative z-10${i < arr.length - 1 ? ' mb-3' : ' mb-4'}`}>
+                      {i === 0 ? '"' : ''}{part}{i === arr.length - 1 ? '"' : ''}
+                    </p>
+                  ))}
                   <div className="flex items-center gap-3">
                     {testimonial.image && (
                       <img
