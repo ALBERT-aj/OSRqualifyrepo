@@ -254,6 +254,7 @@ function QualificationPage({ step, answers, handleAnswer, handleNextStep, canPro
     {
       quote: "Mr. Richard helped me so that I was able to qualify and present the right documentations.",
       initials: "BM",
+      image: "/image%20copy%20copy.png",
       name: "Mrs. Beverly Machawi - Zambia"
     },
     {
@@ -835,7 +836,8 @@ function BookingPage({ calendlyLink, setCurrentPage }: { calendlyLink: string; s
   const testimonials = [
     {
       quote: "Mr. Richard helped me so that I was able to qualify and present the right documentations.",
-      author: "Mrs. Beverly Machawi - Zambia"
+      author: "Mrs. Beverly Machawi - Zambia",
+      image: "/image%20copy%20copy.png"
     },
     {
       quote: "Your child will not only receive assistance with the application process but will also have a mentor to guide and support them all the way through to graduation.",
