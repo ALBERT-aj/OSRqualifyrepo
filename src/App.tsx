@@ -254,7 +254,7 @@ function QualificationPage({ step, answers, handleAnswer, handleNextStep, canPro
     {
       quote: "I've got 2 kids at Curtain, and Mr. Richards, upon hearing the courses that my kids wanted to pursue, he was able to advise and help pick the best school for that particular course. | You can miss the opportunity just because you did not present the right documentation, and this is what Optimal Student Recruitment did for me. They aligned what I needed to produce as documentation.",
       initials: "BM",
-      image: "/image%20copy%20copy.png",
+      image: "/image%20copy%20copy%20copy.png",
       name: "Mrs. Beverly Machawi - Zambia"
     },
     {
@@ -280,7 +280,7 @@ function QualificationPage({ step, answers, handleAnswer, handleNextStep, canPro
 
     const timer = setInterval(() => {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 9000);
+    }, 11000);
     return () => clearInterval(timer);
   }, [isPaused]);
 
@@ -844,7 +844,7 @@ function BookingPage({ calendlyLink, setCurrentPage }: { calendlyLink: string; s
     {
       quote: "I've got 2 kids at Curtain, and Mr. Richards, upon hearing the courses that my kids wanted to pursue, he was able to advise and help pick the best school for that particular course. | You can miss the opportunity just because you did not present the right documentation, and this is what Optimal Student Recruitment did for me. They aligned what I needed to produce as documentation.",
       author: "Mrs. Beverly Machawi - Zambia",
-      image: "/image%20copy%20copy.png"
+      image: "/image%20copy%20copy%20copy.png"
     },
     {
       quote: "Your child will not only receive assistance with the application process but will also have a mentor to guide and support them all the way through to graduation.",
