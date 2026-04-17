@@ -252,7 +252,7 @@ function QualificationPage({ step, answers, handleAnswer, handleNextStep, canPro
 
   const testimonials = [
     {
-      quote: "Mr. Richard helped me so that I was able to qualify and present the right documentations.",
+      quote: "You can miss the opportunity just because you did not present the right documentation, and this is what Optimal Student Recruitment did for me. They aligned what I needed to produce as documentation. I've got 2 kids at Curtin, and Mr. Richards, upon hearing the courses that my kids wanted to pursue, he was able to advise and help pick the best school for that particular course.",
       initials: "BM",
       image: "/image%20copy%20copy.png",
       name: "Mrs. Beverly Machawi - Zambia"
@@ -840,7 +840,7 @@ function BookingPage({ calendlyLink, setCurrentPage }: { calendlyLink: string; s
 
   const testimonials = [
     {
-      quote: "Mr. Richard helped me so that I was able to qualify and present the right documentations.",
+      quote: "You can miss the opportunity just because you did not present the right documentation, and this is what Optimal Student Recruitment did for me. They aligned what I needed to produce as documentation. I've got 2 kids at Curtin, and Mr. Richards, upon hearing the courses that my kids wanted to pursue, he was able to advise and help pick the best school for that particular course.",
       author: "Mrs. Beverly Machawi - Zambia",
       image: "/image%20copy%20copy.png"
     },
