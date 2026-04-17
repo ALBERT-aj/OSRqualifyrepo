@@ -267,6 +267,11 @@ function QualificationPage({ step, answers, handleAnswer, handleNextStep, canPro
       quote: "Optimal Student Recruitment made the impossible possible. My daughter received her acceptance letter in just 5 months. We couldn't have done it without their support.",
       initials: "TM",
       name: "Mr. Tembo, Botswana"
+    },
+    {
+      quote: "Richard was not only known to us, but he came highly recommended by both my brother-in-law and my brother, who were living in Perth at the time. That personal referral gave us immediate peace of mind.",
+      initials: "MM",
+      name: "Mrs. Mwango"
     }
   ];
 
@@ -847,6 +852,10 @@ function BookingPage({ calendlyLink, setCurrentPage }: { calendlyLink: string; s
     {
       quote: "The consultation gave us so much clarity. We knew exactly what we needed to do next.",
       author: "Parent from Zimbabwe"
+    },
+    {
+      quote: "Richard was not only known to us, but he came highly recommended by both my brother-in-law and my brother, who were living in Perth at the time. That personal referral gave us immediate peace of mind.",
+      author: "Mrs. Mwango"
     }
   ];
 
