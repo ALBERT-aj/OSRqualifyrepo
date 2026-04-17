@@ -839,7 +839,8 @@ function BookingPage({ calendlyLink, setCurrentPage }: { calendlyLink: string; s
     },
     {
       quote: "Your child will not only receive assistance with the application process but will also have a mentor to guide and support them all the way through to graduation.",
-      author: "Mrs. Gina Mwango Willey - Zambia, Kitwe"
+      author: "Mrs. Gina Mwango Willey - Zambia, Kitwe",
+      image: "/image%20copy.png"
     },
     {
       quote: "The consultation gave us so much clarity. We knew exactly what we needed to do next.",
@@ -946,9 +947,18 @@ function BookingPage({ calendlyLink, setCurrentPage }: { calendlyLink: string; s
                 <p className="text-gray-700 leading-relaxed mb-4 relative z-10">
                   "{testimonial.quote}"
                 </p>
-                <p className="text-sm font-semibold text-gray-900">
-                  - {testimonial.author}
-                </p>
+                <div className="flex items-center gap-3">
+                  {testimonial.image && (
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.author}
+                      className="w-10 h-10 rounded-full object-cover flex-shrink-0"
+                    />
+                  )}
+                  <p className="text-sm font-semibold text-gray-900">
+                    - {testimonial.author}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
