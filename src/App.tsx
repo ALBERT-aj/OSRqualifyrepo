@@ -271,7 +271,7 @@ function QualificationPage({ step, answers, handleAnswer, handleNextStep, canPro
     {
       quote: "Richard was not only known to us, but he came highly recommended by both my brother-in-law and my brother, who were living in Perth at the time. That personal referral gave us immediate peace of mind.",
       initials: "MM",
-      name: "Mrs. Mwango"
+      name: "Mrs. Mwango - Zambia"
     }
   ];
 
@@ -855,9 +855,17 @@ function BookingPage({ calendlyLink, setCurrentPage }: { calendlyLink: string; s
     },
     {
       quote: "Richard was not only known to us, but he came highly recommended by both my brother-in-law and my brother, who were living in Perth at the time. That personal referral gave us immediate peace of mind.",
-      author: "Mrs. Mwango"
+      author: "Mrs. Mwango - Zambia"
     }
   ];
+
+  const VISIBLE = 3;
+  const [slideIndex, setSlideIndex] = useState(0);
+  const maxSlide = testimonials.length - VISIBLE;
+
+  const prevSlide = () => setSlideIndex(i => Math.max(0, i - 1));
+  const nextSlide = () => setSlideIndex(i => Math.min(maxSlide, i + 1));
+  const visibleTestimonials = testimonials.slice(slideIndex, slideIndex + VISIBLE);
 
   return (
     <div className="min-h-screen bg-white">
@@ -946,32 +954,62 @@ function BookingPage({ calendlyLink, setCurrentPage }: { calendlyLink: string; s
       </section>
 
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-12 text-center">
             What Other Parents Are Saying
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-gradient-to-br from-gray-50 to-white border-2 border-gray-200 rounded-xl p-6 relative">
-                <Quote className="w-10 h-10 text-[#25D366] opacity-20 absolute top-4 right-4" />
-                <p className="text-gray-700 leading-relaxed mb-4 relative z-10">
-                  "{testimonial.quote}"
-                </p>
-                <div className="flex items-center gap-3">
-                  {testimonial.image && (
-                    <img
-                      src={testimonial.image}
-                      alt={testimonial.author}
-                      className="w-10 h-10 rounded-full object-cover flex-shrink-0"
-                    />
-                  )}
-                  <p className="text-sm font-semibold text-gray-900">
-                    - {testimonial.author}
+          <div className="relative">
+            <div className="grid md:grid-cols-3 gap-6 transition-all duration-500">
+              {visibleTestimonials.map((testimonial, index) => (
+                <div key={slideIndex + index} className="bg-gradient-to-br from-gray-50 to-white border-2 border-gray-200 rounded-xl p-6 relative animate-fade-in">
+                  <Quote className="w-10 h-10 text-[#25D366] opacity-20 absolute top-4 right-4" />
+                  <p className="text-gray-700 leading-relaxed mb-4 relative z-10">
+                    "{testimonial.quote}"
                   </p>
+                  <div className="flex items-center gap-3">
+                    {testimonial.image && (
+                      <img
+                        src={testimonial.image}
+                        alt={testimonial.author}
+                        className="w-10 h-10 rounded-full object-cover flex-shrink-0"
+                      />
+                    )}
+                    <p className="text-sm font-semibold text-gray-900">
+                      - {testimonial.author}
+                    </p>
+                  </div>
                 </div>
+              ))}
+            </div>
+
+            <div className="flex items-center justify-center gap-4 mt-8">
+              <button
+                onClick={prevSlide}
+                disabled={slideIndex === 0}
+                className="w-10 h-10 rounded-full border-2 border-gray-300 flex items-center justify-center text-gray-600 hover:border-[#25D366] hover:text-[#25D366] transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+
+              <div className="flex gap-2">
+                {Array.from({ length: maxSlide + 1 }).map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setSlideIndex(i)}
+                    className={`w-2.5 h-2.5 rounded-full transition-colors ${slideIndex === i ? 'bg-[#25D366]' : 'bg-gray-300 hover:bg-gray-400'}`}
+                  />
+                ))}
               </div>
-            ))}
+
+              <button
+                onClick={nextSlide}
+                disabled={slideIndex === maxSlide}
+                className="w-10 h-10 rounded-full border-2 border-gray-300 flex items-center justify-center text-gray-600 hover:border-[#25D366] hover:text-[#25D366] transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
           </div>
         </div>
       </section>
