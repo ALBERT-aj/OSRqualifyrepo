@@ -259,6 +259,7 @@ function QualificationPage({ step, answers, handleAnswer, handleNextStep, canPro
     {
       quote: "Your child will not only receive assistance with the application process but will also have a mentor to guide and support them all the way through to graduation.",
       initials: "GMW",
+      image: "/image%20copy.png",
       name: "Mrs. Gina Mwango Willey - Zambia, Kitwe"
     },
     {
@@ -421,8 +422,16 @@ function QualificationPage({ step, answers, handleAnswer, handleNextStep, canPro
                 </p>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-[#25D366]/10 flex items-center justify-center flex-shrink-0">
-                  <span className="text-[#25D366] font-bold text-base">{testimonials[currentTestimonial].initials}</span>
+                <div className="w-12 h-12 rounded-full bg-[#25D366]/10 flex items-center justify-center flex-shrink-0 overflow-hidden">
+                  {testimonials[currentTestimonial].image ? (
+                    <img
+                      src={testimonials[currentTestimonial].image}
+                      alt={testimonials[currentTestimonial].name}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <span className="text-[#25D366] font-bold text-base">{testimonials[currentTestimonial].initials}</span>
+                  )}
                 </div>
                 <p className="text-sm sm:text-base font-semibold text-gray-900">
                   {testimonials[currentTestimonial].name}
