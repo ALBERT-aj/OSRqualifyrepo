@@ -928,7 +928,10 @@ function BookingPage({ calendlyLink, setCurrentPage }: { calendlyLink: string; s
           <div className="bg-gradient-to-r from-red-50 to-orange-50 border-2 border-red-300 rounded-xl p-5 mt-8 text-center">
             <p className="text-red-900 font-bold text-lg flex items-center justify-center gap-2">
               <AlertCircle className="w-6 h-6" />
-              Only limited early-access consultation spots available this month. These fill quickly - book now to secure yours.
+              Only limited consultation spots available this month. These fill quickly - book now to secure yours.
+            </p>
+            <p className="text-red-800 mt-3 text-base">
+              This session is designed for parents who are ready to move forward as soon as possible. This is NOT for parents who are just exploring options.
             </p>
           </div>
         </div>
